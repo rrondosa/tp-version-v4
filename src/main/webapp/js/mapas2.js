@@ -7,7 +7,17 @@ var componentForm = {
 	country : 'long_name',
 	postal_code : 'short_name'
 };
-
+var data = {
+	formatted_address : '',
+	latitud : '',
+	longitud : '',
+	street_number : '',
+	route : '',
+	locality : '',
+	administrative_area_level_1 : '',
+	country : '',
+	postal_code : ''
+};
 function initAutocomplete() {
 	
 	var map = new google.maps.Map(document.getElementById('map'), {
@@ -71,19 +81,12 @@ function fillInAddress() {
       if (componentForm[addressType]) {
         var val = place.address_components[i][componentForm[addressType]];
         document.getElementById(addressType).value = val;
+        data[addressType] = val;
       }
     }
-    var data ={
-		formatted_address : place.formatted_address,
-		lng : place.geometry.viewport.b.b,
-		lat : place.geometry.viewport.f.f,	
-		street_number 				: componentForm[street_number] == undefined? '':componentForm[street_number],
-		route 						: componentForm[route]== undefined? '':componentForm[route],
-		locality 					: componentForm[locality]== undefined? '':componentForm[locality],
-		administrative_area_level_1 : componentForm[administrative_area_level_1]== undefined? '':componentForm[administrative_area_level_1],
-		country 					: componentForm[country]== undefined? '':componentForm[country],
-		postal_code 				: componentForm[postal_code]== undefined? '':componentForm[postal_code]
-    };
+    data.formatted_address = place.formatted_address;
+    data.latitud = place.geometry.viewport.f.f;
+    data.longitud = place.geometry.viewport.b.b;
     
     console.log(data);
     ajaxPost(data);
@@ -145,12 +148,12 @@ function geocodeResult(results, status) {
 function ajaxPost(data){
 	$.ajax({
     	type : 'POST',
-    	/*url : 'inicioHome2',*/
     	url : 'mapaJson',
     	contentType: 'application/json',
-    	data : data,
+    	data : JSON.stringify(data),
     	success : function(data, status, xhr){
-    		console.info(data);
+    		console.log("SUCCESS: ", data);
+			display(data);
 	
     	},
     	error: function(error){

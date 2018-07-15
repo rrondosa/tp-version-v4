@@ -27,22 +27,7 @@
 	    <label>Descripcion:</label>
 	       <form:input path="descripcion" type="text" id="descripcion" class="input form-control"/>
 	   </div>
-	   
-<%-- 	   <div class="form-group">
-	    <label>Tipo de evento:</label>
-	       	<form:select path="tipoEvento" id="tipoEvento" class="input form-control">
-	      		<form:option value="si">Bar</form:option>
-	      		<form:option value="no">Boliche</form:option>
-	    	</form:select>
-	   </div> --%>
-	   
-	   <div class="form-group">
-	    <label>Tipo de evento:</label>
-	       	<form:select path="tipoEvento" items="" var="evento">
-				<form:option value="${ evento.getId }">${ evento.getId }</form:option>
-			</form:select>
-	   </div>
-	
+
 	   <div class="form-group">
 	    <label>Fecha:</label>
 	    <form:input path="fecha" type="date" id="fecha" class="input form-control" />
@@ -125,30 +110,7 @@
 	    
 		<div id="map"></div>
 		
-		<!-- table id="address">
-	      <tr>
-	        <td class="label">Dirección</td>
-	        <td class="slimField"><input class="field" id="street_number"
-	              disabled="true"></input></td>
-	        <td class="wideField" colspan="2"><input class="field" id="route"
-	              disabled="true"></input></td>
-	      </tr>
-	      <tr>
-	        <td class="label">Cuidad</td>
-	        <td class="wideField" colspan="3"><input class="field" id="locality" disabled="true"></input></td>
-	      </tr>
-	      <tr>
-	        <td class="label">Localidad</td>
-	        <td class="slimField"><input class="field"  id="administrative_area_level_1" disabled="true"></input></td>
-	        <td class="label">Codigo postal</td>
-	        <td class="wideField"><input class="field" id="postal_code"   disabled="true"></input></td>
-	      </tr>
-	      <tr>
-	        <td class="label">Pais</td>
-	        <td class="wideField" colspan="3"><input class="field"  id="country" disabled="true"></input></td>
-	      </tr>
-	    </table-->
-	    
+		
 	    <form >
 	    	<div class="form-row">
 	    		<div class="form-group col-md-4">
@@ -183,8 +145,17 @@
 					<input type="text"	class="form-control" id="country">
 	    		</div>
 	    	</div>
-	    	<button type="submit" class="btn btn-primary">Validar dirección</button>
-			
+	    	<!-- button type="submit" class="btn btn-primary">Validar dirección</button-->
+	    	<c:if test="${not empty error}">
+		       <h4><span class="alert alert-warning">${error}</span></h4>
+		        <br>
+        	</c:if>	
+        	
+        	<c:if test="${not empty ok}">
+		       <h4><span class="alert alert-secondary">${error}</span></h4>
+		        <br>
+        	</c:if>	
+			${d.getFormatted_address()}
 		</form>
     </div>
     

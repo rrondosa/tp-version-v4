@@ -2,8 +2,8 @@ package ar.edu.unlam.tallerweb1.modelo;
 
 public class UbicacionJson {
 	private String formatted_address;
-	private long latitud;
-	private long longitud;
+	private String latitud;
+	private String longitud;
 	private String street_number;
 	private String route;
 	private String locality;
@@ -20,16 +20,16 @@ public class UbicacionJson {
 	public void setFormatted_address(String formatted_address) {
 		this.formatted_address = formatted_address;
 	}
-	public long getLatitud() {
+	public String getLatitud() {
 		return latitud;
 	}
-	public void setLatitud(long latitud) {
+	public void setLatitud(String latitud) {
 		this.latitud = latitud;
 	}
-	public long getLongitud() {
+	public String getLongitud() {
 		return longitud;
 	}
-	public void setLongitud(long longitud) {
+	public void setLongitud(String longitud) {
 		this.longitud = longitud;
 	}
 
