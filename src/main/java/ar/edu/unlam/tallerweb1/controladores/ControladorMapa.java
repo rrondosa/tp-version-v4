@@ -1,41 +1,61 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Direccion;
+import ar.edu.unlam.tallerweb1.modelo.Evento;
 import ar.edu.unlam.tallerweb1.modelo.UbicacionJson;
 
 
 @Controller
 public class ControladorMapa {
-
-	
-	@RequestMapping(path = "/mapaJson",method=RequestMethod.POST)
-	public ModelAndView inicioPost(@RequestBody UbicacionJson ubicacion) {
+	@RequestMapping(path = "/valida-direccion")
+	public ModelAndView crearDireccion() {
+		
+		Direccion direccion = new Direccion();
 		
 		ModelMap model = new ModelMap();
-
-		System.out.println("dire:"+ubicacion.getFormatted_address());
+		model.put("keyDirecion", direccion);
 		
-		if (ubicacion.getStreet_number().equals("") || ubicacion.getRoute().equals("") || ubicacion.getAdministrative_area_level_1().equals("") ) {
-			model.put("error", "La dirección esta incompleta.");
-		}else{
-			Direccion d = new Direccion(ubicacion.getStreet_number(), ubicacion.getRoute(), ubicacion.getLocality(), 
-										ubicacion.getAdministrative_area_level_1(), ubicacion.getCountry(), ubicacion.getPostal_code(), 
-										ubicacion.getLatitud(),ubicacion.getLongitud(),
-										ubicacion.getFormatted_address());
-			model.put("ok", "La dirreción es valida!");
-			model.put("direccion",d);
-			
-		}
-		
-
 		return new ModelAndView ("crearEvento",model);
 	}
+	
+//	@RequestMapping(path = "/valida-direccion",method=RequestMethod.POST)
+//	public ModelAndView validarDireccion(@RequestBody UbicacionJson ubicacion, HttpServletRequest request, @ModelAttribute("keyDirecion") Direccion direccion) {
+//		
+//		ModelMap model = new ModelMap();
+//
+//		System.out.println("dire:"+ubicacion.getFormatted_address());
+//		
+//		if (ubicacion.getStreet_number().equals("") || ubicacion.getRoute().equals("") || ubicacion.getAdministrative_area_level_1().equals("") ) {
+//			model.put("error", "La dirección esta incompleta.");
+//			
+//		}else{
+//			request.getSession().setAttribute( "formatted_address"			, ubicacion.getFormatted_address());
+//		    request.getSession().setAttribute( "latitud"					, ubicacion.getLatitud());
+//		    request.getSession().setAttribute( "longitud"					, ubicacion.getLongitud());
+//		    request.getSession().setAttribute( "street_number"				, ubicacion.getStreet_number());
+//		    request.getSession().setAttribute( "route"						, ubicacion.getRoute());
+//		    request.getSession().setAttribute( "locality"					, ubicacion.getLocality());
+//		    request.getSession().setAttribute( "administrative_area_level_1", ubicacion.getAdministrative_area_level_1());
+//		    request.getSession().setAttribute( "country"					, ubicacion.getCountry());
+//		    request.getSession().setAttribute( "postal_code"				, ubicacion.getPostal_code());
+//		    
+//		   
+//			
+//			model.put("ok", "La direción es valida!");
+//			
+//		}
+//		
+//		return new ModelAndView ("crearEvento",model);
+//	}
 
 }

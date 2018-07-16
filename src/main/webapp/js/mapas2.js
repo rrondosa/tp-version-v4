@@ -148,12 +148,12 @@ function geocodeResult(results, status) {
 function ajaxPost(data){
 	$.ajax({
     	type : 'POST',
-    	url : 'mapaJson',
+    	url : 'valida-direccion',
+//    	url : 'crearEvento',
     	contentType: 'application/json',
     	data : JSON.stringify(data),
     	success : function(data, status, xhr){
     		console.log("SUCCESS: ", data);
-			display(data);
 	
     	},
     	error: function(error){

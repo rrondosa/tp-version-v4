@@ -18,25 +18,49 @@
 				<div class="col-md-8">
 					<div id="carousel" class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner">
+							<c:if test="${not empty errorlista}">
+								<div class="carousel-item active">
+									<img class="d-block img-fluid w-100" src="img/carousel-img1.jpg"/>
+									<div class="carousel-caption">
+										<h3>First slide label</h3>
+										<p>Duerme todo el día, ve de fiesta toda la noche, nunca envejezcas, nunca mueras.</p>
+									</div>
+								</div>
+								<div class="carousel-item">
+									<img class="d-block img-fluid w-100" src="img/carousel-img2.jpg"/>
+									<div class="carousel-caption">
+										<h3>Second slide label</h3>
+										<p>Las aventuras comienzan cuando estás dispuesto a	celebrar.</p>
+									</div>
+								</div>
+								<div class="carousel-item">
+									<img class="d-block img-fluid w-100" src="img/carousel-img3.jpg"/>
+									<div class="carousel-caption">
+										<h3>Second slide label</h3>
+										<p>Las aventuras comienzan cuando estás dispuesto a	celebrar.</p>
+									</div>
+								</div>
+							</c:if>	
+						
 							<div class="carousel-item active">
-								<img class="d-block img-fluid w-100" src="img/carousel-img1.jpg">
+								<img class="d-block img-fluid w-100" src="img/${keyEventos1.getImagen1()}">
 								<div class="carousel-caption">
-									<h3>First slide label</h3>
-									<p>Duerme todo el día, ve de fiesta toda la noche, nunca envejezcas, nunca mueras.</p>
+									<h3>${keyEventos1.getNombre()}</h3>
+									<p>${keyEventos1.getDescripcion()}</p>
 								</div>
 							</div>
 							<div class="carousel-item">
-								<img class="d-block img-fluid w-100" src="img/carousel-img2.jpg">
+								<img class="d-block img-fluid w-100" src="img/${keyEventos1.getImagen2()}">
 								<div class="carousel-caption">
-									<h3>Second slide label</h3>
-									<p>Las aventuras comienzan cuando estás dispuesto a celebrar.</p>
+									<h3>${keyEventos2.getNombre()}</h3>
+									<p>${keyEventos2.getDescripcion()}</p>
 								</div>
 							</div>
 							<div class="carousel-item">
-								<img class="d-block img-fluid w-100" src="img/carousel-img3.jpg">
+								<img class="d-block img-fluid w-100" src="img/${keyEventos3.getImagen3()}">
 								<div class="carousel-caption">
-									<h3>Second slide label</h3>
-									<p>Las aventuras comienzan cuando estás dispuesto a celebrar.</p>
+									<h3>${keyEventos3.getNombre()}</h3>
+									<p>${keyEventos3.getDescripcion()}</p>
 								</div>
 							</div>
 						</div>

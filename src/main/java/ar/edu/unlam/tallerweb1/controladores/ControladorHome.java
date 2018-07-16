@@ -1,5 +1,8 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
@@ -48,7 +51,24 @@ public class ControladorHome {
 	//	model.put("keySelectPrestaciones", servicioPrestacion.listarPrestacionService());
 		
 		model.put("keyListarEventos", servicioEvento.listarTodosEventosService());
-	
+
+		List<Evento> listaCorru1 = servicioEvento.listarEventosCarrouselService();
+		if (!listaCorru1.isEmpty()) {
+			Evento eve1;
+			Evento eve2;
+			Evento eve3;
+			eve1 = listaCorru1.get(0);
+			eve2 = listaCorru1.get(1);	
+			eve3 = listaCorru1.get(2);
+			
+			model.put("keyEventos1", eve1);
+			model.put("keyEventos2", eve2);
+			model.put("keyEventos3", eve3);
+		}else{
+			
+			model.put("errorlista", "lista vacia");
+		}
+		
 		return new ModelAndView ("inicio",model);
 	}
 

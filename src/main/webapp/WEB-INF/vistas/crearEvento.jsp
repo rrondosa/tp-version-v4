@@ -11,8 +11,18 @@
  <div class="container" id="contenedor_form">    
 	 
 	  <br />
+	
 	<div class="row">
-
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<div class="alert alert-warning alert-dismissable">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  <strong>¡Cuidado!</strong>${keyMsjEvento}
+			</div>
+		</div>
+	</div>
+	<div class="row">
+	 		
 	 <div class="col-md-7">
 
 	  <form:form action="crearEvento" method="POST" modelAttribute="keyEvento">
@@ -99,7 +109,7 @@
 	    <button class="btn btn-danger boton" type="reset">Reset</button>
 	   </div>
 	
-	  </form:form>
+	  </form:form> <!-- Fomulario keyEvento  -->
     </div>
     
     <div class="col-md-5">
@@ -111,11 +121,12 @@
 		<div id="map"></div>
 		
 		
-	    <form >
+	    <!-- form:form action="valida-direccion" method="POST" modelAttribute="keyEvento.direcion"-->
+	    
 	    	<div class="form-row">
 	    		<div class="form-group col-md-4">
 			      <label for="street_number">Nro calle</label>
-			      <input type="text" class="form-control" id="street_number" placeholder="">
+			      <input type="text" class="form-control" id="street_number" placeholder=""/>
 			    </div>
 			    <div class="form-group col-md-8">
 			      <label for="route">Calle</label>
@@ -125,38 +136,28 @@
 	    	<div class="form-row">
 	    		<div class="form-group col-md-12">
 	    			<label for="locality">Ciudad</label> 
-					<input type="text"	class="form-control" id="locality">
+					<input type="text"	class="form-control" id="locality"/>
 	    		</div>
 	    	</div>
 			<div class="form-row">
 				<div class="form-group col-md-8">
 					<label for="administrative_area_level_1">Localidad</label> 
-					<input type="text"	class="form-control" id="administrative_area_level_1">
+					<input  type="text"	class="form-control" id="administrative_area_level_1"/>
 				</div>
 				
 				<div class="form-group col-md-4">
 					<label for="postal_code">Codigo postal</label> 
-					<input type="text" 	class="form-control" id="postal_code">
+					<input type="text" 	class="form-control" id="postal_code"/>
 				</div>
 			</div>
 			<div class="form-row">
 	    		<div class="form-group col-md-12">
 	    			<label for="country">Pais</label> 
-					<input type="text"	class="form-control" id="country">
+					<input type="text"	class="form-control" id="country"/>
 	    		</div>
 	    	</div>
-	    	<!-- button type="submit" class="btn btn-primary">Validar dirección</button-->
-	    	<c:if test="${not empty error}">
-		       <h4><span class="alert alert-warning">${error}</span></h4>
-		        <br>
-        	</c:if>	
-        	
-        	<c:if test="${not empty ok}">
-		       <h4><span class="alert alert-secondary">${error}</span></h4>
-		        <br>
-        	</c:if>	
-			${d.getFormatted_address()}
-		</form>
+	    	
+		<!-- /form:form-->
     </div>
     
    </div>

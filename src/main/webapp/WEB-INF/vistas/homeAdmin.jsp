@@ -34,7 +34,7 @@
 		                <td class="align-middle">${ evento.getFecha() }</td>
 		                <td class="align-middle">${ evento.getHoraInicio() }</td>
 		                <td class="align-middle">${ evento.getHoraFin() }</td>
-		                <td class="align-middle">${ evento.getDireccion() }</td>
+		                <td class="align-middle">${ evento.getDireccion().getFormatted_address() }</td>
 		                <td class="align-middle text-center">${ evento.getMostrar() }</td>
 		                <td class="align-middle">
 		                	<a href="actualizarEvento?id=${ evento.getId() }">Modificar </a>|

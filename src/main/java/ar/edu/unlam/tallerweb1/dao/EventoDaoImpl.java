@@ -35,8 +35,17 @@ public class EventoDaoImpl implements EventoDao{
 	public List<Evento> listarTodosLosEventos() {
 		Session session = sessionFactory.getCurrentSession();
 		List<Evento> listado = session.createCriteria(Evento.class)
+								.list();
+		return listado;
+	}
+	
+	@Override
+	public List<Evento> listarLosEventosCarusel() {
+		Session session = sessionFactory.getCurrentSession();
+		List<Evento> listado = session.createCriteria(Evento.class)				
 								.addOrder(Order.asc("fecha"))
 								.addOrder(Order.asc("horaInicio"))
+								.setMaxResults(3)
 								.list();
 		return listado;
 	}

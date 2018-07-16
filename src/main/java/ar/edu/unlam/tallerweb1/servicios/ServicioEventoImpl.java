@@ -29,6 +29,11 @@ public class ServicioEventoImpl implements ServicioEvento {
 	}
 	
 	@Override
+	public List<Evento> listarEventosCarrouselService() {
+		return eventoDao.listarLosEventosCarusel();
+	}
+	
+	@Override
 	public void actualizarEventoService(Evento evento){
 		eventoDao.actualizarEvento(evento);
 	}
