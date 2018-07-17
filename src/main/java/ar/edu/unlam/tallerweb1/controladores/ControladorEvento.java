@@ -120,9 +120,23 @@ public class ControladorEvento {
 	}
 	
 	
+	// MODIFICAR EVENTO POST
 	@RequestMapping(path = "/validarActualizarEvento", method = RequestMethod.POST)
-	public ModelAndView validarActualizarEvento(@ModelAttribute("evento") Evento evento) {
+	public ModelAndView validarActualizarEvento(@ModelAttribute("evento") Evento evento, HttpServletRequest request) {
 		
+		Direccion d = new Direccion();
+		
+		d.setFormatted_address			((String)request.getSession().getAttribute( "formatted_address"));
+		d.setLatitud					((String)request.getSession().getAttribute( "latitud"));	
+		d.setLongitud					((String)request.getSession().getAttribute( "longitud"));
+		d.setStreet_number				((String)request.getSession().getAttribute( "street_number"));
+		d.setRoute						((String)request.getSession().getAttribute( "route"));
+		d.setLocality					((String)request.getSession().getAttribute( "locality"));	
+		d.setAdministrative_area_level_1((String)request.getSession().getAttribute( "administrative_area_level_1"));	
+		d.setCountry					((String)request.getSession().getAttribute( "country"));	
+		d.setPostal_code				((String)request.getSession().getAttribute( "postal_code"));	
+		
+		evento.setDireccion(d);
 		servicioEvento.actualizarEventoService(evento);		
 
 		return new ModelAndView("redirect:/homeAdmin");
@@ -146,32 +160,38 @@ public class ControladorEvento {
 	public ModelAndView buscarEventos(@ModelAttribute("evento") Evento evento) {
 		ModelMap model = new ModelMap();
 		
+		List<Evento> listaCorru1 = servicioEvento.listarEventosCarrouselService();
+		if (!listaCorru1.isEmpty()) {
+			Evento eve1;
+			Evento eve2;
+			Evento eve3;
+			eve1 = listaCorru1.get(0);
+			eve2 = listaCorru1.get(1);	
+			eve3 = listaCorru1.get(2);
+			
+			model.put("keyEventos1", eve1);
+			model.put("keyEventos2", eve2);
+			model.put("keyEventos3", eve3);
+		}else{
+			
+			model.put("errorlista", "lista vacia");
+		}
+		
 		List<Evento> ResultadoDeEventos = servicioEvento.buscarEventosService(evento.getNombre());
 		
 		if(ResultadoDeEventos.size() == 0) {
 			
-			model.put("error", "No se ecnontraron resultados con los parametros ingresados");
+			model.put("error", "No se encontraron resultados con los parametros ingresados.");
 			
 			
 		}else {
 			
-			model.put("keyListarEventos", ResultadoDeEventos);
+			model.put("keyListarEventosFiltrados", ResultadoDeEventos);
 			
 		}
 		
 		return new ModelAndView("inicio", model);
 	}
-
-	//public ModelAndView validarActualizarEvento(@ModelAttribute("evento") Evento evento, HttpServletRequest request) {
-	public ModelAndView validarActualizarEvento(@ModelAttribute("evento") Evento evento, HttpServletRequest request) {
-		
-		servicioEvento.actualizarEventoService(evento);		
-
-		return new ModelAndView("redirect:/homeAdmin");
-
-	}
-	
-
 	
 	
 } // FIN CONTROLLER
