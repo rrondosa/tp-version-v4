@@ -2,13 +2,48 @@
 
 <%@ include file="_header.jsp" %>
 <%@ include file="_menuAdmin.jsp" %>
+<style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+        height: 300px;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+</style>
+<script>
 
+      function initMap() {
+    	var lat = document.getElementById("lat").value;
+    	var lng = document.getElementById("lng").value;
+        var myLatLng = {lat:parseFloat(lat) , lng: parseFloat(lng)};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKsOyLppGoYEHhTvwny8xDgKj96ZzSIFU&callback=initMap">
+</script>
 
 <div class="py-2">
     <div class="container">
       <div class="row">
         
-        <div class="col-md-6">
+        <div class="col-md-7">
           
 			<form:form class="" modelAttribute="keyEvento">
 			
@@ -20,6 +55,10 @@
 					<tr>
 						<td>Descripcion:</td>
 						<td class="font-weight-bold">${ keyEvento.getDescripcion() }</td>
+					</tr>
+					<tr>
+						<td>Dirección:</td>
+						<td class="font-weight-bold">${ keyEvento.getDireccion().getFormatted_address() }</td>
 					</tr>
 					<tr>
 						<td>Fecha:</td>
@@ -58,11 +97,13 @@
 						<td class="text-uppercase font-weight-bold">${ keyEvento.getMostrar() }</td>
 					</tr>
 				</table>
+				<input id="lng" type="hidden" value=${ keyEvento.getDireccion().getLongitud()}>
+				<input id="lat"  type="hidden" value=${ keyEvento.getDireccion().getLatitud()}>
 	  		</form:form>
         
         </div>
           	
-			<div class="col-md-6">
+			<div class="col-md-5">
 				
 				<!-- CARROUSEL -->
 				<div id="carousel" class="carousel slide" data-ride="carousel">
@@ -94,7 +135,7 @@
 						<span class="sr-only">Siguente</span>
 					</a>
 				</div>
-			
+				</br>
 			    <!--The div element for the map -->
 			    <div id="map"></div>
 		    
@@ -110,28 +151,6 @@
   </div>
 
   <br/>
-  
-  
-
-	<!-- SCRIPT GOOGLE MAPS API ***************************************************** -->
-	<script>
-		// Initialize and add the map
-		function initMap() {
-	  		// The location of Uluru
-	  		var uluru = {lat: -34.6704143 }, lng: -58.56292880000001 }};
-	  		// The map, centered at Uluru
-	  		var map = new google.maps.Map( document.getElementById('map'), {zoom: 16, center: uluru} );
-	  		// The marker, positioned at Uluru
-	  		var marker = new google.maps.Marker({position: uluru, map: map});
-		}
-    </script>
-    <!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function
-    -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKsOyLppGoYEHhTvwny8xDgKj96ZzSIFU&callback=initMap"></script>
-  	<!--  ***************************************************************************  -->
   
 
 <%@ include file="_footer.jsp" %>

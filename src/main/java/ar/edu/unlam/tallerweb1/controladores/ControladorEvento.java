@@ -86,7 +86,7 @@ public class ControladorEvento {
 	public ModelAndView validarDireccion(@RequestBody UbicacionJson ubicacion, HttpServletRequest request, @ModelAttribute("keyEvento") Evento evento) {
 				
 		System.out.println("dire:"+ubicacion.getFormatted_address());
-		request.getSession().setAttribute("msjDireccion", "");
+
 		if (ubicacion.getStreet_number().equals("") || ubicacion.getRoute().equals("") || ubicacion.getAdministrative_area_level_1().equals("") ) {
 			request.getSession().setAttribute( "street_number"				, ubicacion.getStreet_number());
 		    request.getSession().setAttribute( "route"						, ubicacion.getRoute());

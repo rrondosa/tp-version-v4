@@ -85,8 +85,8 @@ function fillInAddress() {
       }
     }
     data.formatted_address = place.formatted_address;
-    data.latitud = place.geometry.viewport.f.f;
-    data.longitud = place.geometry.viewport.b.b;
+    data.latitud = place.geometry.location.lat();
+    data.longitud = place.geometry.location.lng();
     
     console.log(data);
     ajaxPost(data);
