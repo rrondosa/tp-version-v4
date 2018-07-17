@@ -1,37 +1,36 @@
-/**
- * funcion donde se configura el mapa para el home
- */
-
-//function initMap() {
-//	var uluru = {
-//		lat : -34.607034,
-//		lng : -58.375516
-//	};
-//	var map = new google.maps.Map(document.getElementById('map'), {
-//		zoom : 7,
-//		center : uluru
-//	});
-//	var marker = new google.maps.Marker({
-//		position : uluru,
-//		map : map
-//	});
-//}
-
-// This example adds a search box to a map, using the Google Place Autocomplete
-// feature. People can enter geographical searches. The search box will return a
-// pick list containing a mix of places and predicted search terms.
-
-// This example requires the Places library. Include the libraries=places
-// parameter when you first load the API. For example:
-// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
 function initAutocomplete() {
   var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.607034, lng: -58.375516},
     zoom: 14,
     mapTypeId: 'roadmap'
   });
-
+	google.maps.event.addDomListener(window, 'load', mapInitialize);
+	
+	function mapInitialize() {
+		if (navigator.geolocation) {
+			navigator.geolocation
+					.getCurrentPosition(set_position_in_google_map);
+		} else {
+			alert("Tu navegador no soporta el API de geolocalización. Actualiza a un navegador más moderno.");
+		}
+	}
+	function set_position_in_google_map(position) {
+		var crds = position.coords;
+		var mapPosition = new google.maps.LatLng(crds.latitude, crds.longitude);
+		var mapOptions = {
+			zoom : 15,
+			center : mapPosition
+		};
+		var map = new google.maps.Map(document.getElementById('map'),
+				mapOptions);
+		var infowindow = new google.maps.InfoWindow({
+			map : map,
+			position : mapPosition,
+			content : 'Localización encontrada utilizando Geolocation API.'
+		});
+	
+	}
+	
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
