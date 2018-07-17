@@ -108,7 +108,7 @@ public class ControladorEvento {
 		return new ModelAndView ("redirect:/crearEvento");
 	}
 	
-	// MODIFICAR EVENTO GET
+	// EDITAR EVENTO
 	@RequestMapping(value = "/actualizarEvento")
 	public ModelAndView actualizarEvento( @RequestParam("id") Long id) {
 		
@@ -143,7 +143,6 @@ public class ControladorEvento {
 
 	}
 	
-	
 	// MOSTRAR DETALLE DEL EVENTO
 	@RequestMapping(path = "/detalleEvento")
 	public ModelAndView detalleEvento(@RequestParam("id") Long id) {
@@ -161,24 +160,38 @@ public class ControladorEvento {
 	public ModelAndView buscarEventos(@ModelAttribute("evento") Evento evento) {
 		ModelMap model = new ModelMap();
 		
+		List<Evento> listaCorru1 = servicioEvento.listarEventosCarrouselService();
+		if (!listaCorru1.isEmpty()) {
+			Evento eve1;
+			Evento eve2;
+			Evento eve3;
+			eve1 = listaCorru1.get(0);
+			eve2 = listaCorru1.get(1);	
+			eve3 = listaCorru1.get(2);
+			
+			model.put("keyEventos1", eve1);
+			model.put("keyEventos2", eve2);
+			model.put("keyEventos3", eve3);
+		}else{
+			
+			model.put("errorlista", "lista vacia");
+		}
+		
 		List<Evento> ResultadoDeEventos = servicioEvento.buscarEventosService(evento.getNombre());
 		
 		if(ResultadoDeEventos.size() == 0) {
 			
-			model.put("error", "No se ecnontraron resultados con los parametros ingresados");
+			model.put("error", "No se encontraron resultados con los parametros ingresados.");
 			
 			
 		}else {
 			
-			model.put("keyListarEventos", ResultadoDeEventos);
+			model.put("keyListarEventosFiltrados", ResultadoDeEventos);
 			
 		}
 		
 		return new ModelAndView("inicio", model);
 	}
-
-	
-
 	
 	
 } // FIN CONTROLLER

@@ -3,7 +3,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <!DOCTYPE html>
 <html>
 
@@ -52,7 +51,7 @@
 	          
 			<c:if test="${not empty foto}">
 		          <div class="col-md-1">	 
-					   <div class="card"><img class="card-img-top" src="img/${foto}" alt="Card image cap"></div>
+					   <a href="#" class="card"><img class="card-img-top" src="img/${foto}" alt="Card image cap"></a>	
 				 </div>
 			</c:if>
 			 
