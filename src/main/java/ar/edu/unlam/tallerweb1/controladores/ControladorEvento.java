@@ -108,7 +108,7 @@ public class ControladorEvento {
 		return new ModelAndView ("redirect:/crearEvento");
 	}
 	
-	// EDITAR EVENTO
+	// MODIFICAR EVENTO GET
 	@RequestMapping(value = "/actualizarEvento")
 	public ModelAndView actualizarEvento( @RequestParam("id") Long id) {
 		
@@ -120,14 +120,29 @@ public class ControladorEvento {
 	}
 	
 	
+	// MODIFICAR EVENTO POST
 	@RequestMapping(path = "/validarActualizarEvento", method = RequestMethod.POST)
-	public ModelAndView validarActualizarEvento(@ModelAttribute("evento") Evento evento) {
+	public ModelAndView validarActualizarEvento(@ModelAttribute("evento") Evento evento, HttpServletRequest request) {
 		
+		Direccion d = new Direccion();
+		
+		d.setFormatted_address			((String)request.getSession().getAttribute( "formatted_address"));
+		d.setLatitud					((String)request.getSession().getAttribute( "latitud"));	
+		d.setLongitud					((String)request.getSession().getAttribute( "longitud"));
+		d.setStreet_number				((String)request.getSession().getAttribute( "street_number"));
+		d.setRoute						((String)request.getSession().getAttribute( "route"));
+		d.setLocality					((String)request.getSession().getAttribute( "locality"));	
+		d.setAdministrative_area_level_1((String)request.getSession().getAttribute( "administrative_area_level_1"));	
+		d.setCountry					((String)request.getSession().getAttribute( "country"));	
+		d.setPostal_code				((String)request.getSession().getAttribute( "postal_code"));	
+		
+		evento.setDireccion(d);
 		servicioEvento.actualizarEventoService(evento);		
 
 		return new ModelAndView("redirect:/homeAdmin");
 
 	}
+	
 	
 	// MOSTRAR DETALLE DEL EVENTO
 	@RequestMapping(path = "/detalleEvento")
@@ -162,14 +177,6 @@ public class ControladorEvento {
 		return new ModelAndView("inicio", model);
 	}
 
-	//public ModelAndView validarActualizarEvento(@ModelAttribute("evento") Evento evento, HttpServletRequest request) {
-	public ModelAndView validarActualizarEvento(@ModelAttribute("evento") Evento evento, HttpServletRequest request) {
-		
-		servicioEvento.actualizarEventoService(evento);		
-
-		return new ModelAndView("redirect:/homeAdmin");
-
-	}
 	
 
 	
