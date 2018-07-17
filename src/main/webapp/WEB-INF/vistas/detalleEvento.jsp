@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <%@ include file="_header.jsp" %>
-<%@ include file="_menuAdmin.jsp" %>
+
+<c:if test="${not empty admin }">
+	<%@ include file="_menuAdmin.jsp" %>
+</c:if>
+
+
 <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */

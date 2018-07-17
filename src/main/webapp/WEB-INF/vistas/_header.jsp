@@ -37,11 +37,13 @@
       
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
         <ul class="navbar-nav">
+        
           	<c:if test="${ empty nombre }">
 	          	<li class="nav-item"><a class="nav-link" href="registroUsuario"><i class="fa d-inline fa-lg fa-sign-in"></i> Registrarme</a></li>
           	</c:if>
+          	
           	<c:if test="${ not empty nombre }">
-	          	<li> Bienvenido, ${ nombre } </li>
+	          	<li> Bienvenido, <a href="modificarUsuario" style="color:white;">${ nombre }</a></li>
           	</c:if>
           	
         </ul>
@@ -51,15 +53,20 @@
 	          
 			<c:if test="${not empty foto}">
 		          <div class="col-md-1">	 
-					   <a href="#" class="card"><img class="card-img-top" src="img/${foto}" alt="Card image cap"></a>	
+					   <a href="modificarUsuario" class="card"><img class="card-img-top" src="img/${foto}" alt="Card image cap"></a>	
 				 </div>
-			</c:if>
-			 
+			</c:if> 
 		</c:if>
-	         
+		   
 		<c:if test="${empty nombre}">
 			<a class="btn navbar-btn ml-2 text-white btn-secondary" href="login">
 			<i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp;Login</a>
+		</c:if>
+		
+		<c:if test="${empty foto}">
+	         <div class="col-md-1">	 
+				   <a href="#" class="card"><img class="card-img-top" src="img/perfil00.jpg" alt="Card image cap"></a>	
+			 </div>
 		</c:if>
 	      
       </div>
@@ -95,10 +102,6 @@
             <c:if test="${not empty admin }">
             	<li class="nav-item"><a href="homeAdmin" class="nav-link">_Menu Admin_</a></li>
             </c:if>
-            
-            <%-- <c:if test="${not empty user}">
-            	<li class="nav-item"><a href="homeUsuario" class="nav-link">Menu Usuario</a></li>
-            </c:if> --%>
             
           </ul>
         </div>

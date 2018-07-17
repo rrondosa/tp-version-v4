@@ -10,4 +10,7 @@ public interface ServicioUsuario {
 	public Usuario buscarUsuarioXIdSERVICE(Long id);
 	public Usuario existeUsuarioEnBDSERVICE(Usuario usuario);
 	public List<Usuario> listarTodosLosUsuariosSERVICE();
+	public void actualizarUsuarioSERVICE(Usuario usuario);
+	public Usuario validarUsuarioSERVICE(String email);
+	
 }

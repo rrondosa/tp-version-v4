@@ -14,7 +14,6 @@
 			<div class="row">
 
 				<!-- CARROUSEL -->
-
 				<div class="col-md-8">
 					<div id="carousel" class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner">
@@ -119,7 +118,7 @@
 			     <div class="card-body">
 			       <h5 class="card-title">${ evento.getNombre() }</h5>
 			       <p class="card-text">${ evento.getDescripcion() }</p>
-			       <a href="#" class="btn btn-primary">+ Detalles </a>&nbsp;&nbsp;&nbsp;&nbsp;
+			       <a href="detalleEvento?id=${ evento.getId() }" class="btn btn-primary">+ Detalles </a>&nbsp;&nbsp;&nbsp;&nbsp;
 			       
 			       <c:if test="${ not empty nombre }">
 			       		<a href="agregarEventoAlCarrito?id=${ evento.getId() }" class="btn btn-success">Agregar</a>
