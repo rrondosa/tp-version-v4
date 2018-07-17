@@ -3,6 +3,7 @@
 
 <link rel="stylesheet" href="css/estilo-mapa.css" type="text/css">
 <link rel="stylesheet" href="css/estilo.css" type="text/css">
+<link rel="stylesheet" href="css/bootstrap-social.css" type="text/css">
 
 <script src="js/mapas.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKsOyLppGoYEHhTvwny8xDgKj96ZzSIFU&libraries=places&callback=initAutocomplete"></script>
@@ -135,11 +136,16 @@
 			     <div class="card-body">
 			       <h5 class="card-title">${ evento.getNombre() }</h5>
 			       <p class="card-text">${ evento.getDescripcion() }</p>
-			       <a href="#" class="btn btn-primary">+ Detalles </a>&nbsp;&nbsp;&nbsp;&nbsp;
+			       <a href="#" class="btn btn-primary">+ Detalles </a>&nbsp;&nbsp;
 			       
 			       <c:if test="${ not empty nombre }">
-			       		<a href="agregarEventoAlCarrito?id=${ evento.getId() }" class="btn btn-success">Agregar</a>
+			       		<a href="agregarEventoAlCarrito?id=${ evento.getId() }" class="btn btn-success">Agregar</a>&nbsp;&nbsp;
           			</c:if>
+          			<a class="btn btn-social-icon btn-facebook btn-xs" href="${evento.getFacebook()}"><span class="fa fa-facebook"></span></a>&nbsp;
+          			
+					<a class="btn btn-social-icon btn-twitter btn-xs" href="${evento.getTwitter()}"><span class="fa fa-twitter"></span></a>&nbsp;
+					
+					<a class="btn btn-social-icon btn-instagram btn-xs" href="${evento.getInstagram()}"><span class="fa fa-instagram"></span></a>
 
 			     </div>
 			   </div>
@@ -162,12 +168,17 @@
 			     <div class="card-body">
 			       <h5 class="card-title">${ evento.getNombre() }</h5>
 			       <p class="card-text">${ evento.getDescripcion() }</p>
-			       <a href="#" class="btn btn-primary">+ Detalles </a>&nbsp;&nbsp;&nbsp;&nbsp;
-			       
+			       <a href="#" class="btn btn-primary">+ Detalles </a>&nbsp;&nbsp;
 			       <c:if test="${ not empty nombre }">
-			       		<a href="agregarEventoAlCarrito?id=${ evento.getId() }" class="btn btn-success">Agregar</a>
+			       		<a href="agregarEventoAlCarrito?id=${ evento.getId() }" class="btn btn-success">Agregar</a>&nbsp;&nbsp;
           			</c:if>
-
+          			
+          			<a class="btn btn-social-icon btn-facebook btn-xs" href="${evento.getFacebook()}"><span class="fa fa-facebook"></span></a>&nbsp;
+          			
+					<a class="btn btn-social-icon btn-twitter btn-xs" href="${evento.getTwitter()}"><span class="fa fa-twitter"></span></a>&nbsp;
+					
+					<a class="btn btn-social-icon btn-instagram btn-xs" href="${evento.getInstagram()}"><span class="fa fa-instagram"></span></a>
+					
 			     </div>
 			   </div>
 			 </div>
