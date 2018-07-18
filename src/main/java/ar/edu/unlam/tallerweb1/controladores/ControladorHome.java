@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unlam.tallerweb1.modelo.Evento;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEvento;
 
+
 @Controller
 public class ControladorHome {
 
@@ -80,7 +81,50 @@ public class ControladorHome {
 		//model.put("keySelectPrestaciones", servicioPrestacion.listarPrestacionService());
 		return new ModelAndView("homeAdmin",model);
 	 }
-		
 	
+	
+	// IR A LISTADO DE BARES
+	@RequestMapping(path = "/bares", method = RequestMethod.GET)
+	public ModelAndView irABares() {
+		
+		ModelMap model = new ModelMap();
+		model.put("keyListarEventos", servicioEvento.listarEventoXTipoService("bar"));
+		
+		return new ModelAndView("bares",model);
+	}
+	
+	
+	// IR A LISTADO DE BOLICHES
+	@RequestMapping(path = "/boliches", method = RequestMethod.GET)
+	public ModelAndView irABoliches() {
+		
+		ModelMap model = new ModelMap();
+		model.put("keyListarEventos", servicioEvento.listarEventoXTipoService("boliche"));
+		
+		return new ModelAndView("boliches",model);
+	}
+	
+	
+	// IR A LISTADO DE PUBS
+	@RequestMapping(path = "/pubs", method = RequestMethod.GET)
+	public ModelAndView irAPubs() {
+		
+		ModelMap model = new ModelMap();
+		model.put("keyListarEventos", servicioEvento.listarEventoXTipoService("pub"));
+		
+		return new ModelAndView("pubs",model);
+	}
+	
+	
+	// IR A LISTADO DE RESTOBARES
+	@RequestMapping(path = "/restobares", method = RequestMethod.GET)
+	public ModelAndView irARestobares() {
+		
+		ModelMap model = new ModelMap();
+		model.put("keyListarEventos", servicioEvento.listarEventoXTipoService("restobar"));
+		
+		return new ModelAndView("restobares",model);
+	}
 
+		
 }

@@ -47,6 +47,13 @@ public class ServicioEventoImpl implements ServicioEvento {
 	public Evento buscarEventoPorIdService(Long id) {
 		return eventoDao.buscarEventoPorId(id);
 	}
+
+	@Override
+	public List<Evento> listarEventoXTipoService(String ParametroTipo) {
+		return eventoDao.listarEventoXTipo(ParametroTipo);
+	}
+	
+	
 	
 	
 }

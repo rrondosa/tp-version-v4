@@ -13,5 +13,5 @@ public interface EventoDao {
 	public void actualizarEvento(Evento evento);
 	public List<Evento> buscarEvento(String ParametroNombre);
 	public Evento buscarEventoPorId(Long id);
-	
+	public List<Evento> listarEventoXTipo(String ParametroTipo);
 }

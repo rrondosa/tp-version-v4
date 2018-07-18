@@ -11,11 +11,11 @@
 <script src="js/mapas.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKsOyLppGoYEHhTvwny8xDgKj96ZzSIFU&libraries=places&callback=initAutocomplete"> </script>
 
-		<div class = "container" align="center">
+<%-- 		<div class = "container" align="center">
 			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-				<%--Definicion de un form asociado a la accion /validar-login por POST. Se indica ademas que el model attribute se--%>
-				<%--debe referenciar con el nombre usuario, spring mapea los elementos de la vista con los atributos de dicho objeto--%>
-					<%--para eso debe coincidir el valor del elemento path de cada input con el nombre de un atributo del objeto --%>
+				Definicion de un form asociado a la accion /validar-login por POST. Se indica ademas que el model attribute se
+				debe referenciar con el nombre usuario, spring mapea los elementos de la vista con los atributos de dicho objeto
+					para eso debe coincidir el valor del elemento path de cada input con el nombre de un atributo del objeto
 				<form:form action="validar-login" method="POST" modelAttribute="usuario">
 			    	<!-- h3 class="form-signin-heading">Taller Web I</h3>
 					<hr class="colorgraph"--><br>
@@ -25,14 +25,15 @@
 				    	 	 <span class="alert alert-success">${mensaje}</span>  
 				    	 </c:if>	
 			    	 </c:if>
-			    	 <%--Bloque que es visible si el elemento error no está vacío	--%>
+			    	 </h3>
+			    	 Bloque que es visible si el elemento error no está vacío	
 					<c:if test="${not empty error}">
 				       <h4><span class="alert alert-warning">${error}</span></h4>
 				        <br>
 		        	</c:if>	
 					<hr class="colorgraph"><br>
 
-					<%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
+					Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados
 					<p>Email: </p>
 					<form:input path="email" id="email" type="email" class="form-control" required="required" />
 					<br/>
@@ -42,17 +43,57 @@
 					<button class="btn btn-lg btn-primary btn-block" Type="Submit">Login</button>
 				</form:form>
 			</div>
-		</div>
+		</div> --%>
 		
-		<h4></h4>
+		  <div class="py-4">
+		    <div class="container">
+		      <div class="row" >
+		        <div class="col-md-3"> </div>
+		        <div class="col-md-6">
+		          <div class="card text-white p-4 bg-primary">
+		            <div class="card-body">
+		              <h1 class="mb-4">Login</h1>
+		              
+		              <form:form action="validar-login" method="POST" modelAttribute="usuario">
+		              	
+		              	<h3 class="form-signin-heading"> 
+					    	<c:if test="${empty error}">
+						    	<c:if test="${not empty mensaje}">
+						    	 	 <span class="alert alert-success">${mensaje}</span>  
+						    	 </c:if>	
+					    	 </c:if>
+					    </h3>
+		              	
+		              	<%--Bloque que es visible si el elemento error no está vacío	--%>
+						<c:if test="${not empty error}">
+					       <h4><span class="alert alert-warning">${error}</span></h4>
+					        <br>
+			        	</c:if>	
+						<hr class="colorgraph"><br>
+		              
+		                <div class="form-group">
+		                  <label>Correo Electronico</label>
+		                  <form:input path="email" id="email" type="email" class="form-control" required="required" /> 
+		                </div>
+		                <div class="form-group">
+		                  <label>Password</label>
+		                  <form:input path="password" type="password" id="password" class="form-control" required="required"/>
+		                </div>
+		                <br/>
+		                <button type="submit" class="btn btn-secondary">Login</button>
+		              </form:form>
+		              
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>
 		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 		<script src="js/bootstrap.min.js" type="text/javascript"></script>
-	<div>
-	
-	
-	</div>
 
-
-  <%@ include file="_footer.jsp" %>
+<br/>
+<%@ include file="_footer.jsp" %>

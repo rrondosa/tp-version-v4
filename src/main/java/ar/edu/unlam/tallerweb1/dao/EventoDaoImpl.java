@@ -76,6 +76,16 @@ public class EventoDaoImpl implements EventoDao{
 		
 		return session.get(Evento.class,id); 
 	}
+	
+	
+	@Transactional
+	@Override
+	public List<Evento> listarEventoXTipo(String ParametroTipo) {
+		Session session = sessionFactory.getCurrentSession();
+		List<Evento> eventosList = session.createCriteria(Evento.class)
+									.add(Restrictions.eq("tipo",ParametroTipo)).list();
+		return eventosList;
+	}
 
 	
 }

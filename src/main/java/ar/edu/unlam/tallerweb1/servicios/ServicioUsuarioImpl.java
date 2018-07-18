@@ -40,12 +40,18 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 		return usuarioDao.listarTodosLosUsuarios();
 	}
 
-	
-	
+	@Override
+	public void actualizarUsuarioSERVICE(Usuario usuario) {
+		usuarioDao.actualizarUsuario(usuario);
+		
+	}
 
-	
-	
-	
+	@Override
+	public Usuario validarUsuarioSERVICE(String email) {
+		return usuarioDao.validarUsuario(email);
+	}
+
+
 	
 	
 }

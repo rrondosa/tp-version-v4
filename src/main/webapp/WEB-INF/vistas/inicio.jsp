@@ -13,7 +13,6 @@
 			<div class="row">
 
 				<!-- CARROUSEL -->
-
 				<div class="col-md-8">
 					<div id="carousel" class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner">
@@ -124,9 +123,11 @@
     
 	<!-- 2 CARDS -->
 	<!-- LISTA DE EVENTOS  -->
-      <div class="row py-2">
+		
+      <div class="row">
+      
       	<c:forEach items="${keyListarEventosFiltrados}" var="evento">
-
+		
 			<!-- SE AGREGO LA FUNCION IF DE 'SI' PARA MOSTRAR Y 'NO' PARA NO MOSTRAR EL EVENTO -->
 			<c:if test="${ evento.getMostrar() eq 'si' }">
 			 <div class="col-md-4">
@@ -168,7 +169,9 @@
 			     <div class="card-body">
 			       <h5 class="card-title">${ evento.getNombre() }</h5>
 			       <p class="card-text">${ evento.getDescripcion() }</p>
-			       <a href="#" class="btn btn-primary">+ Detalles </a>&nbsp;&nbsp;
+			       
+			       <a href="detalleEvento?id=${ evento.getId() }" class="btn btn-primary">+ Detalles </a>&nbsp;&nbsp;&nbsp;&nbsp;
+			       
 			       <c:if test="${ not empty nombre }">
 			       		<a href="agregarEventoAlCarrito?id=${ evento.getId() }" class="btn btn-success">Agregar</a>&nbsp;&nbsp;
           			</c:if>
