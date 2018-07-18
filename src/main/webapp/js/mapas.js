@@ -1,12 +1,22 @@
 function initAutocomplete() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.607034, lng: -58.375516},
-    zoom: 14,
-    mapTypeId: 'roadmap'
-  });
-	google.maps.event.addDomListener(window, 'load', mapInitialize);
+	  var map = new google.maps.Map(document.getElementById('map'), {
+	    center: {lat: -34.607034, lng: -58.375516},
+	    zoom: 14,
+	    mapTypeId: 'roadmap'
+	  });
+	// Create the search box and link it to the UI element.
+	  var input = document.getElementById('pac-input');
+	  var searchBox = new google.maps.places.SearchBox(input);
+	  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 	
-	function mapInitialize() {
+	  // Bias the SearchBox results towards current map's viewport.
+	  map.addListener('bounds_changed', function() {
+	    searchBox.setBounds(map.getBounds());
+	  });
+	  
+	google.maps.event.addDomListener(window, 'load', mapInitialize(map));
+	
+	function mapInitialize(map) {
 		if (navigator.geolocation) {
 			navigator.geolocation
 					.getCurrentPosition(set_position_in_google_map);
@@ -17,29 +27,31 @@ function initAutocomplete() {
 	function set_position_in_google_map(position) {
 		var crds = position.coords;
 		var mapPosition = new google.maps.LatLng(crds.latitude, crds.longitude);
-		var mapOptions = {
-			zoom : 15,
-			center : mapPosition
-		};
-		var map = new google.maps.Map(document.getElementById('map'),
-				mapOptions);
+//		var mapOptions = {
+//			zoom : 15,
+//			center : mapPosition,
+//			mapTypeId: 'roadmap'
+//		};
+//		var map = new google.maps.Map(document.getElementById('map'),
+//				mapOptions);
+		map.setCenter(mapPosition);
 		var infowindow = new google.maps.InfoWindow({
 			map : map,
 			position : mapPosition,
-			content : 'Localización encontrada utilizando Geolocation API.'
+			content : 'Localizacion actual'
 		});
+		
+//		// Create the search box and link it to the UI element.
+//		  var input = document.getElementById('pac-input');
+//		  var searchBox = new google.maps.places.SearchBox(input);
+//		  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+//
+//		  // Bias the SearchBox results towards current map's viewport.
+//		  map.addListener('bounds_changed', function() {
+//		    searchBox.setBounds(map.getBounds());
+//		  });
 	
 	}
-	
-  // Create the search box and link it to the UI element.
-  var input = document.getElementById('pac-input');
-  var searchBox = new google.maps.places.SearchBox(input);
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-  // Bias the SearchBox results towards current map's viewport.
-  map.addListener('bounds_changed', function() {
-    searchBox.setBounds(map.getBounds());
-  });
 
   var markers = [];
   // Listen for the event fired when the user selects a prediction and retrieve
