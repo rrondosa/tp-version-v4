@@ -5,16 +5,21 @@
   <div class="py-2">
     <div class="container">
       <div class="row">
+      
+     
         
         <div class="col-md-12">
+        	<br/>
+			<h4 class="font-italic">Mis Eventos</h4>
+        	
           <table class="table">
 	            <thead>
 	              <tr>
 	              	<th>Portada</th>
-	                <th>Nombre Del Evento</th>
+	                <th>Lugar</th>
 	                <th>Fecha</th>
-	                <th>HoraDeInicio</th>
-	                <th>HoraDeFin</th>
+	                <th>Abren</th>
+	                <th>Cierran</th>
 	                <th>Acciones</th>
 	              </tr>
 	            </thead>
@@ -29,8 +34,8 @@
 		                <td class="align-middle">${ carrito.evento.getHoraInicio() }</td>
 		                <td class="align-middle">${ carrito.evento.getHoraFin() }</td>
 		                <td class="align-middle">
-		                	<a href="#">Detalle</a>
-		                	<a href="eliminarEventoDeCarrito?id=${ carrito.getId() }">Quitar </a>|
+		                	<a href="detalleEvento?id=${ carrito.evento.getId() }">+Detalle </a>|
+		                	<a href="eliminarEventoDeCarrito?id=${ carrito.getId() }">Quitar </a>
 		                </td>
 	                </tr>
             	</c:forEach>

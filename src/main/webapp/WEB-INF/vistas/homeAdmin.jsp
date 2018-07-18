@@ -13,12 +13,12 @@
               <tr>
               	<th>Portada</th>
                 <th>Nombre</th>
-                <th>Descripcion</th>
+                <th>Tipo</th>
                 <th>Fecha</th>
-                <th>HoraInicio</th>
-                <th>HoraFin</th>
+                <th>Abre</th>
+                <!-- <th>HoraFin</th> -->
                 <th>Direccion</th>
-                <th>Mostrar</th>
+                <th>Mostrar?</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -30,15 +30,15 @@
             				<a href="#" class="thumbnail"><img src="img/${ evento.getImagen1() }" alt="miniMagen" width="75" height="auto"></a>
     					</td>
 		            	<td class="align-middle">${ evento.getNombre() }</td>
-		                <td class="align-middle">${ evento.getDescripcion() }</td>
-		                <td class="align-middle">${ evento.getFecha() }</td>
+		                <td class="align-middle">${ evento.getTipo() }</td>
+		                <td class="align-middle" width="100">${ evento.getFecha() }</td>
 		                <td class="align-middle">${ evento.getHoraInicio() }</td>
-		                <td class="align-middle">${ evento.getHoraFin() }</td>
+		                <%-- <td class="align-middle">${ evento.getHoraFin() }</td> --%>
 		                <td class="align-middle">${ evento.getDireccion().getFormatted_address() }</td>
 		                <td class="align-middle text-center">${ evento.getMostrar() }</td>
 		                <td class="align-middle">
-		                	<a href="actualizarEvento?id=${ evento.getId() }">Modificar </a>|
-		                	<a href="detalleEvento?id=${ evento.getId() }">Detalle</a>
+		                	<a href="actualizarEvento?id=${ evento.getId() }">Modificar </a>
+		                	<a href="detalleEvento?id=${ evento.getId() }">+Detalle</a>
 		                </td>
 	                </tr>
             	</c:forEach>

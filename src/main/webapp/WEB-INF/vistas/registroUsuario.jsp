@@ -64,7 +64,7 @@
 		<br />
 	   <div class="form-group botones">
 	    <button class="btn btn-primary boton" type="submit">Crear</button>&nbsp;&nbsp;
-	    <button class="btn btn-danger boton" type="reset">Reset</button>
+	    <a href="inicioHome" class="btn btn-danger boton">Cancelar</a>
 	   </div>
 	
 	  </form:form>

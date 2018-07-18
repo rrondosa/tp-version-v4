@@ -97,7 +97,7 @@
 			<br />
 		   <div class="form-group botones">
 		    <button class="btn btn-primary boton" type="submit">Modificar Evento</button>&nbsp;&nbsp;
-		    <a href="homeAdmin" class="btn btn-danger boton">Cancelar</a>
+		    <a href="inicioHome" class="btn btn-danger boton">Cancelar</a>
 		   </div>
 		
 		  </form:form>		<!-- cierre formulario keyEvento -->

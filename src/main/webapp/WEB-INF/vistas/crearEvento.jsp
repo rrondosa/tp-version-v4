@@ -35,7 +35,17 @@
 	   
 	   <div class="form-group">
 	    <label>Descripcion:</label>
-	       <form:input path="descripcion" type="text" id="descripcion" class="input form-control"/>
+	       <form:textarea path="descripcion" type="text" id="descripcion" class="input form-control"/>
+	   </div>
+	   
+	   <div class="form-group">
+	    <label>Tipo:</label>
+	       <form:select path="tipo" id="tipo" class="input form-control">
+		       <form:option value="bar">Bar</form:option>
+		       <form:option value="boliche">Boliche</form:option>
+		       <form:option value="pub">Pub</form:option>
+		       <form:option value="restobar">Restobar</form:option>
+		   </form:select>
 	   </div>
 
 	   <div class="form-group">

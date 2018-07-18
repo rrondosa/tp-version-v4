@@ -24,6 +24,7 @@ public class Evento {
 	
 	private String nombre;
 	private String descripcion;
+	private String tipo;
 	private String fecha;
 	private String horaInicio;
 	private String horaFin; 
@@ -53,13 +54,7 @@ public class Evento {
 
 	
 	@OneToMany(mappedBy="evento")		// RELACION CON CARRITO
-	private List<Carrito> carritos = new ArrayList<>();
-	
-	
-	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="tipoEvento_id")
-	private TipoEvento tipoEvento;
-	
+	private List<Carrito> carritos = new ArrayList<>();	
 	
 	
 	public Evento() {
@@ -83,13 +78,14 @@ public class Evento {
 		this.horaFin = horaFin;
 	}
 
-	public Evento(Long id, String nombre, String descripcion, String fecha, String horaInicio, String horaFin,
-			String telefono, String imagen1, String imagen2, String imagen3, String correo, String facebook,
-			String twitter, String instagram, String mostrar, String[] etiqueta, Prestacion prestacion,
-			Costo costoClasicacion, Direccion direccion, List<Carrito> carritos, TipoEvento tipoEvento) {
+	public Evento(Long id, String nombre, String descripcion, String tipo, String fecha, String horaInicio,
+			String horaFin, String telefono, String imagen1, String imagen2, String imagen3, String correo,
+			String facebook, String twitter, String instagram, String mostrar, String[] etiqueta, Prestacion prestacion,
+			Costo costoClasicacion, Direccion direccion, List<Carrito> carritos) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+		this.tipo = tipo;
 		this.fecha = fecha;
 		this.horaInicio = horaInicio;
 		this.horaFin = horaFin;
@@ -107,7 +103,6 @@ public class Evento {
 		this.costoClasicacion = costoClasicacion;
 		this.direccion = direccion;
 		this.carritos = carritos;
-		this.tipoEvento = tipoEvento;
 	}
 
 	public Long getId() {
@@ -132,6 +127,14 @@ public class Evento {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getFecha() {
@@ -270,15 +273,7 @@ public class Evento {
 		this.carritos = carritos;
 	}
 
-	public TipoEvento getTipoEvento() {
-		return tipoEvento;
-	}
-
-	public void setTipoEvento(TipoEvento tipoEvento) {
-		this.tipoEvento = tipoEvento;
-	}
-
-
+	
 }
 	
 	

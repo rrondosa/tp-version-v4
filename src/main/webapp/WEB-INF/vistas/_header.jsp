@@ -80,16 +80,29 @@
               <a href="inicioHome" class="nav-link">
                 <i class="fa fa-home fa-home"></i>&nbsp;Inicio</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Eventos
-                <br>
-              </a>
-            </li>
-            
             <c:if test="${ not empty nombre }">
 	          	<li class="nav-item"><a class="nav-link" href="misEventos">Mis Eventos<br></a></li>
           	</c:if>
-            
+            <li class="nav-item">
+              <a class="nav-link" href="bares">Bares
+                <br>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="boliches">Boliches
+                <br>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pubs">Pubs
+                <br>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="restobares">Restobares
+                <br>
+              </a>
+            </li>
             <li class="nav-item">
               <a href="#" class="nav-link">Nosotros</a>
             </li>
@@ -98,7 +111,7 @@
             </li>
             
             <c:if test="${not empty admin }">
-            	<li class="nav-item"><a href="homeAdmin" class="nav-link">_Menu Admin_</a></li>
+            	<li class="nav-item"><a href="homeAdmin" class="nav-link">[ Menu Admin ]</a></li>
             </c:if>
             
           </ul>

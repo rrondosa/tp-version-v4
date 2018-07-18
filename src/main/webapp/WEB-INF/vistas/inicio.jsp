@@ -123,9 +123,11 @@
     
 	<!-- 2 CARDS -->
 	<!-- LISTA DE EVENTOS  -->
-      <div class="row py-2">
+		
+      <div class="row">
+      
       	<c:forEach items="${keyListarEventosFiltrados}" var="evento">
-
+		
 			<!-- SE AGREGO LA FUNCION IF DE 'SI' PARA MOSTRAR Y 'NO' PARA NO MOSTRAR EL EVENTO -->
 			<c:if test="${ evento.getMostrar() eq 'si' }">
 			 <div class="col-md-4">

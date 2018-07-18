@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
+
 <%@ include file="_header.jsp" %>
 
 <c:if test="${not empty admin }">
@@ -44,63 +45,111 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKsOyLppGoYEHhTvwny8xDgKj96ZzSIFU&callback=initMap">
 </script>
 
+
+
 <div class="py-2">
     <div class="container">
-      <div class="row">
+    
+    <!--  SLIDER CARRUSEL	 -->
+    <div class="row">
+	
+		<div class="col-md-12">
+			<br/>
+			<h4 class="font-italic">Detalles del Lugar</h4>
+			<hr />
+	
+			<div id="demo" class="carousel slide" data-ride="carousel">
+			
+  				<ul class="carousel-indicators">
+				    <li data-target="#demo" data-slide-to="0" class="active"></li>
+				    <li data-target="#demo" data-slide-to="1"></li>
+				    <li data-target="#demo" data-slide-to="2"></li>
+				 </ul>
+				 
+			  <div class="carousel-inner">
+			  
+			    <div class="carousel-item active">
+			      <img src="img/${ keyEvento.getImagen1() }" alt="imagen1" width="1100" height="500">
+			      <div class="carousel-caption">
+			        <h1>${ keyEvento.getNombre() }</h1>
+			        <!-- <p>Lalalala</p> -->
+			      </div>   
+			    </div>
+			    
+			    <div class="carousel-item">
+			      <img src="img/${ keyEvento.getImagen2() }" alt="imagen2" width="1100" height="500">
+			      <div class="carousel-caption">
+			        <h1>${ keyEvento.getNombre() }</h1>
+			        <!-- <p>Thank you, Chicago!</p> -->
+			      </div>   
+			    </div>
+			    
+			    <div class="carousel-item">
+			      <img src="img/${ keyEvento.getImagen3() }" alt="imagen3" width="1100" height="500">
+			      <div class="carousel-caption">
+			        <h1>${ keyEvento.getNombre() }</h1>
+			       <!--  <p>We love the Big Apple!</p> -->
+			      </div>   
+			    </div>
+			    
+			  </div>
+			  
+			  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+			    <span class="carousel-control-prev-icon"></span>
+			  </a>
+			  
+			  <a class="carousel-control-next" href="#demo" data-slide="next">
+			    <span class="carousel-control-next-icon"></span>
+			  </a>
+			  
+			</div>	<!-- cierre class carrousel -->
+    
+    	</div>		<!-- cierre col-md-12 -->
+    </div>		<!-- cierre row -->
+	<br />
+    
+    <!-- COLUMNA DATOS DEL EVENTO -->
+    <div class="row">
         
         <div class="col-md-7">
           
 			<form:form class="" modelAttribute="keyEvento">
 			
 				<div class="form-group">
-			    	<h3 >${ keyEvento.getNombre() }</h3>
+			    	<h3><strong>${ keyEvento.getNombre() }</strong></h3>
+			    	<h4><small class="form-text text-muted font-italic">- ${ keyEvento.getTipo() } -</small></h4>
+				</div>
+				<br/>
+				<div class="form-group">
+			    	<span>Descripción</span>
 				</div>
 				
 				<table class="table">
 					<tr>
-						<td>Descripcion:</td>
-						<td class="font-weight-bold">${ keyEvento.getDescripcion() }</td>
+						<td>${ keyEvento.getDescripcion() }</td>
 					</tr>
-					<tr>
-						<td>Dirección:</td>
-						<td class="font-weight-bold">${ keyEvento.getDireccion().getFormatted_address() }</td>
-					</tr>
+				</table>
+				
+				<br/><br/>
+				
+				<table class="table">
 					<tr>
 						<td>Fecha:</td>
-						<td class="font-weight-bold">${ keyEvento.getFecha() }</td>
+						<td>${ keyEvento.getFecha() }</td>
 					</tr>
 					<tr>
-						<td>Hora de Inicio:</td>
-						<td class="font-weight-bold">${ keyEvento.getHoraInicio() }</td>
+						<td>Abres (hs):</td>
+						<td>${ keyEvento.getHoraInicio() }</td>
 					</tr>
 					<tr>
-						<td>Hora de Finalizacion:</td>
-						<td class="font-weight-bold">${ keyEvento.getHoraFin() }</td>
+						<td>Cierra (hs):</td>
+						<td>${ keyEvento.getHoraFin() }</td>
 					</tr>
-					<tr>
-						<td>Telefono:</td>
-						<td class="font-weight-bold">${ keyEvento.getTelefono() }</td>
-					</tr>
-					<tr>
-						<td>Correo:</td>
-						<td class="font-weight-bold">${ keyEvento.getCorreo() }</td>
-					</tr>
-					<tr>
-						<td>Facebook:</td>
-						<td class="font-weight-bold">${ keyEvento.getFacebook() }</td>
-					</tr>
-					<tr>
-						<td>Twitter:</td>
-						<td class="font-weight-bold">${ keyEvento.getTwitter() }</td>
-					</tr>
-					<tr>
-						<td>Instagram:</td>
-						<td class="font-weight-bold">${ keyEvento.getInstagram() }</td>
-					</tr>
-					<tr>
+					
+<%-- 					<tr>
 						<td>Mostrar?</td>
 						<td class="text-uppercase font-weight-bold">${ keyEvento.getMostrar() }</td>
-					</tr>
+					</tr> --%>
 				</table>
 				<input id="lng" type="hidden" value=${ keyEvento.getDireccion().getLongitud()}>
 				<input id="lat"  type="hidden" value=${ keyEvento.getDireccion().getLatitud()}>
@@ -108,54 +157,69 @@
         
         </div>
           	
+          	<!-- COLUMNA MAPA -->
 			<div class="col-md-5">
-				
-				<!-- CARROUSEL -->
-				<div id="carousel" class="carousel slide" data-ride="carousel">
-					<div class="carousel-inner">
-					
-						<div class="carousel-item active">
-							<img class="d-block img-fluid w-100" src="img/${ keyEvento.getImagen1() }" />
-							<div class="carousel-caption"><h3>IMG 1: ${ keyEvento.getImagen1() }</h3></div>
-						</div>
-
-						<div class="carousel-item">
-							<img class="d-block img-fluid w-100" src="img/${ keyEvento.getImagen2() }" />
-							<div class="carousel-caption"><h3>IMG 2: ${ keyEvento.getImagen2() }</h3></div>
-						</div>
-						
-						<div class="carousel-item">
-							<img class="d-block img-fluid w-100" src="img/${ keyEvento.getImagen3() }" />
-							<div class="carousel-caption"><h3>IMG 3: ${ keyEvento.getImagen3() }</h3></div>
-						</div>
-						
-					</div>
-					
-					<a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev"> 
-						<span class="carousel-control-prev-icon"></span>
-						<span class="sr-only">Anterior</span>
-					</a> 
-					<a class="carousel-control-next" href="#carousel" role="button" data-slide="next"> 
-						<span class="carousel-control-next-icon"></span>
-						<span class="sr-only">Siguente</span>
-					</a>
-				</div>
-				</br>
 			    <!--The div element for the map -->
 			    <div id="map"></div>
-		    
-  			</div>
+			    
+			    <form:form class="" modelAttribute="keyEvento">
+					<table class="table">
+						<tr>
+							<td class="text-center"><i class="fa d-inline fa-lg fa-map-marker"></i></td>
+							<td>${ keyEvento.getDireccion().getFormatted_address() }</td>
+						</tr>
+						<tr>
+							<td class="text-center"><i class="fa d-inline fa-lg fa-phone-square"></i></td>
+							<td>${ keyEvento.getTelefono() }</td>
+						</tr>
+						<tr>
+							<td class="text-center"><i class="fa d-inline fa-lg fa-envelope-o"></i></td>
+							<td>${ keyEvento.getCorreo() }</td>
+						</tr>
+			
+						
+					</table>
+					
+					<div class="container-fluid">
+					      <div class="row text-center">
+					        <div class="py-1 col-4" style="background-color:#3b5998">
+					          <a href="https://www.facebook.com/${ keyEvento.getFacebook() }" target="_blank">
+					            <i class="fa fa-fw fa-facebook fa-2x text-white"></i>
+					          </a>
+					        </div>
+					        <div class="py-1 col-4" style="background-color:#00b2ff">
+					          <a href="https://twitter.com//#!/${ keyEvento.getTwitter() }" target="_blank">
+					            <i class="fa fa-fw fa-twitter fa-2x text-white"></i>
+					          </a>
+					        </div>
+					        <div class="py-1 col-4" style="background-color:#4c68d7">
+					          <a href="https://www.instagram.com/${ keyEvento.getInstagram() }" target="_blank">
+					            <i class="fa fa-fw fa-instagram fa-2x text-white"></i>
+					          </a>
+					        </div>
+					      </div>
+					 </div>
+				</form:form>
+
+  			</div>		<!-- cierre col-md-5 -->
+  			
+  			
 
       </div>
-      <div>
-      		<h4><a href=<c:url value="homeAdmin" /> >Volver a la lista</a></h4>
+      
+      <br/>
+      <div class="row">
+      	<div class="col-md-12">
+      		<h4><a href=<c:url value="inicioHome"/>><i class="fa fa-arrow-circle-o-left"></i> Volver al Home</a></h4>
       		<!-- tambien funciona asi: <h4><a href="./homeAdmin">Volver a la lista</a></h4> -->
-      		
+     	</div> 
       </div>
+    
     </div>
   </div>
 
   <br/>
+ 
   
 
 <%@ include file="_footer.jsp" %>
