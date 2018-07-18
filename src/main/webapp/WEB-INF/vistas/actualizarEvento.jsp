@@ -1,4 +1,3 @@
-
 <%@ include file="_header.jsp" %>
 <%@ include file="_menuAdmin.jsp" %>
 
@@ -170,11 +169,5 @@
 <br />
  
 <%@ include file="_footer.jsp" %>
- 
- 
- 
- 
- 
- 
  
  

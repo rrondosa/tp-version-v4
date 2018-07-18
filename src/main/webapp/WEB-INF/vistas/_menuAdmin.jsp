@@ -1,6 +1,3 @@
-
-
-
 <div class="py-1">
     <div class="container">
       <div class="row">

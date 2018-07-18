@@ -37,11 +37,9 @@
       
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
         <ul class="navbar-nav">
-        
           	<c:if test="${ empty nombre }">
 	          	<li class="nav-item"><a class="nav-link" href="registroUsuario"><i class="fa d-inline fa-lg fa-sign-in"></i> Registrarme</a></li>
           	</c:if>
-          	
           	<c:if test="${ not empty nombre }">
 	          	<li> Bienvenido, <a href="modificarUsuario" style="color:white;">${ nombre }</a></li>
           	</c:if>

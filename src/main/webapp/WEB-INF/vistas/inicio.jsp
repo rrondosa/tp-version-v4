@@ -1,13 +1,12 @@
 <%@ include file="_header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<link rel="stylesheet" href="css/bootstrap-select.min.css">
 <link rel="stylesheet" href="css/estilo-mapa.css" type="text/css">
+<link rel="stylesheet" href="css/estilo.css" type="text/css">
+<link rel="stylesheet" href="css/bootstrap-social.css" type="text/css">
 
-<script src="js/bootstrap-select.min.js" defer></script>
 <script src="js/mapas.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKsOyLppGoYEHhTvwny8xDgKj96ZzSIFU&libraries=places&callback=initAutocomplete"> </script>
-
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKsOyLppGoYEHhTvwny8xDgKj96ZzSIFU&libraries=places&callback=initAutocomplete"></script>
 
 	<div class="py-2">
     	<div class="container">
@@ -88,25 +87,75 @@
 	
 
 	<!-- BUSCADOR -->
+	</br>
+	</br>
 	<div class="row py-2">
-		<div class="col-md-12">
-			<form:form action="filtros-Busqueda" method="POST" modelAttribute="evento">
-		    	<p>Buscar Evento por nombre</p>
-				<form:input path="nombre" type="text" id="nomb" class="form-control"/>     		  
-				<br/>
-				<button class="btn btn-lg btn-primary btn-block" Type="Submit">Buscar</button>
-		    </form:form>
+	
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			
+		    
+                <form:form action="filtros-Busqueda" method="POST" modelAttribute="evento">
+				    <div class="input-group stylish-input-group">
+		                <!-- form:input path="nombre" type="text" id="nomb" class="form-control"/--> 
+		                <form:input path="nombre" type="text" class="form-control" placeholder="Buscar evento ..."  style="height: 50px;"/>  
+		                <div class="input-group-btn">
+		                    <button type="submit" class="btn btn-default" style="margin-left:-4px;  height: 50px;    width: 70px;  color: #fff; background-color: #12bbad;    border-color: #12bbad;">
+		                        <span class="glyphicon glyphicon-search"></span>
+		                    </button>  
+		                </div>
+		            </div>
+		            
+	            </form:form>
 		</div>
     </div>
     <br>
-    
-	<c:if test="${not empty error}">
-	       <h4><span class="alert alert-warning">${error}</span></h4>
-    </c:if>	
+    <div class="row py-2">
+    	<div class="col-md-12">
+			<c:if test="${not empty error}">
+			       <!-- h4><span class="alert alert-warning">${error}</span></h4-->
+			      <div class="alert alert-warning alert-dismissable"  style="text-align: center;">
+			       		<strong>${error}</strong>
+			      </div>
+		    </c:if>
+		</div>	
+    </div>
     
 	<!-- 2 CARDS -->
 	<!-- LISTA DE EVENTOS  -->
       <div class="row py-2">
+      	<c:forEach items="${keyListarEventosFiltrados}" var="evento">
+
+			<!-- SE AGREGO LA FUNCION IF DE 'SI' PARA MOSTRAR Y 'NO' PARA NO MOSTRAR EL EVENTO -->
+			<c:if test="${ evento.getMostrar() eq 'si' }">
+			 <div class="col-md-4">
+			 
+			   <div class="card">
+			     <img class="card-img-top" src="img/${evento.getImagen1()}" alt="Card image cap">
+			     <div class="card-body">
+			       <h5 class="card-title">${ evento.getNombre() }</h5>
+			       <p class="card-text">${ evento.getDescripcion() }</p>
+			       <a href="#" class="btn btn-primary">+ Detalles </a>&nbsp;&nbsp;
+			       
+			       <c:if test="${ not empty nombre }">
+			       		<a href="agregarEventoAlCarrito?id=${ evento.getId() }" class="btn btn-success">Agregar</a>&nbsp;&nbsp;
+          			</c:if>
+          			<a class="btn btn-social-icon btn-facebook btn-xs" href="${evento.getFacebook()}"><span class="fa fa-facebook"></span></a>&nbsp;
+          			
+					<a class="btn btn-social-icon btn-twitter btn-xs" href="${evento.getTwitter()}"><span class="fa fa-twitter"></span></a>&nbsp;
+					
+					<a class="btn btn-social-icon btn-instagram btn-xs" href="${evento.getInstagram()}"><span class="fa fa-instagram"></span></a>
+
+			     </div>
+			   </div>
+			 </div>
+			</c:if>
+			
+		</c:forEach>
+        
+      </div>
+      
+       <div class="row py-2">
       	<c:forEach items="${keyListarEventos}" var="evento">
 
 			<!-- SE AGREGO LA FUNCION IF DE 'SI' PARA MOSTRAR Y 'NO' PARA NO MOSTRAR EL EVENTO -->
@@ -118,12 +167,19 @@
 			     <div class="card-body">
 			       <h5 class="card-title">${ evento.getNombre() }</h5>
 			       <p class="card-text">${ evento.getDescripcion() }</p>
+			       
 			       <a href="detalleEvento?id=${ evento.getId() }" class="btn btn-primary">+ Detalles </a>&nbsp;&nbsp;&nbsp;&nbsp;
 			       
 			       <c:if test="${ not empty nombre }">
-			       		<a href="agregarEventoAlCarrito?id=${ evento.getId() }" class="btn btn-success">Agregar</a>
+			       		<a href="agregarEventoAlCarrito?id=${ evento.getId() }" class="btn btn-success">Agregar</a>&nbsp;&nbsp;
           			</c:if>
-
+          			
+          			<a class="btn btn-social-icon btn-facebook btn-xs" href="${evento.getFacebook()}"><span class="fa fa-facebook"></span></a>&nbsp;
+          			
+					<a class="btn btn-social-icon btn-twitter btn-xs" href="${evento.getTwitter()}"><span class="fa fa-twitter"></span></a>&nbsp;
+					
+					<a class="btn btn-social-icon btn-instagram btn-xs" href="${evento.getInstagram()}"><span class="fa fa-instagram"></span></a>
+					
 			     </div>
 			   </div>
 			 </div>
