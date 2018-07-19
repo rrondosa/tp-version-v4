@@ -1,0 +1,28 @@
+USE tp;
+
+insert into Direccion (id, route, street_number, locality, administrative_area_level_1, country, formatted_address, latitud, longitud, postal_code)   
+
+values	(	1	,	'	Pres. Juan Domingo Perón	'	,	'	2700	'	,	'	San Justo	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	B1754AZT, Pres. Juan Domingo Perón 2700, B1754AZT San Justo, Buenos Aires	'	,			'-34.6721243',			'-58.56224589999999','B1754'),
+		(	2	,	'	Florencio Varela	'	,	'	1998	'	,	'	San Justo	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Florencio Varela 1998, Ombu 2630, B1754JED San Justo, Buenos Aires	'	,							'-34.67063470000001',	'-58.56248260000001','B1754'	),
+		(	3	,	'	Florencio Varela	'	,	'	1964	'	,	'	Gran Buenos Aires	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Florencio Varela 1964, B1754JED Gran Buenos Aires, Buenos Aires	'	,						'-34.6705845',			'-58.56219820000001','B1754'	)	,
+		(	4	,	'	Av. de Mayo	'	,	'	1881	'	,	'	Ramos Mejía	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Av. de Mayo 1881, B1704BVF Ramos Mejía, Buenos Aires	'	,												'-34.6602236',			'-58.562191600000006','B1754'	),
+		(	5	,	'	Florencio Varela	'	,	'	2080	'	,	'	San Justo	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	2080, JEF, Florencio Varela, B1754 San Justo, Provincia de Buenos Aires	'	,						'-34.6713181',			'-58.56309329999999','B1754'	)	,
+		(	6	,	'	Juan Florio	'	,	'	3094	'	,	'	San Justo	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Juan Florio 3094, B1754AJB San Justo, Buenos Aires	'	,													'-34.6794985',			'-58.562407199999996','B1754'	)	,
+		(	7	,	'	Av. Rivadavia	'	,	'	14232	'	,	'	Ramos Mejía	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Av. Rivadavia 14232, Ramos Mejía, Buenos Aires	'	,													'-34.641432',			'-58.567718499999955','B1754'	)	,
+		(	8	,	'	Av. Rivadavia	'	,	'	14751	'	,	'	Ramos Mejía	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Av. Rivadavia 14751, B1707 Ramos Mejía, Buenos Aires	'	,											'-34.641973',			'-58.575507000000016','B1754'	)	,
+		(	9	,	'	Av. Brig. Gral. Juan Manuel de Rosas	'	,	'	5554	'	,	'	La Matanza	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Av. Brig. Gral. Juan Manuel de Rosas 5554, B1754FUT La Matanza, Buenos Aires',	'-34.6933696',			'-58.57257759999999','B1754'	)	,
+		(	10	,	'	Av. Rivadavia	'	,	'	14150	'	,	'	Ramos Mejía	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Av. Rivadavia 14150, 1704 Ramos Mejía, Buenos Aires	'	,												'-34.6412613',			'-58.566814499999964','B1754'	)	,
+		(	11	,	'	República de Portugal	'	,	'	3158	'	,	'	Gran Buenos Aires	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	República de Portugal 3158, B1765JCZ Gran Buenos Aires, Buenos Aires	'	,			'-34.7010797',			'-58.58153040000002','B1754'	)	,
+		(	12	,	'	Av. Monseñor Bufano	'	,	'	2983	'	,	'	Gran Buenos Aires	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Av. Monseñor Bufano 2983, Gran Buenos Aires, Buenos Aires	'	,							'-34.6833636',			'-58.56897789999999','B1754'	)	,
+		(	13	,	'	Saavedra	'	,	'	399	'	,	'	Ramos Mejia	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	FIC, Saavedra 399, B1704 Ramos Mejía, Provincia de Buenos Aires	'	,											'-34.648174',			'-58.565612999999985','B1754'	)	,
+		(	14	,	'	Av. Pres. Perón	'	,	'	201	'	,	'	Villa Sarmiento	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	J D B1707ABC, Av. Pres. Perón 201, Villa Sarmiento, Buenos Aires	'	,								'-34.638185',			'-58.56805099999997','B1754'	)	,
+		(	15	,	'	Pres. Juan Domingo Perón	'	,	'	2882	'	,	'	Gran Buenos Aires	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Pres. Juan Domingo Perón 2882, B1754AZX Gran Buenos Aires, Buenos Aires	'	,		'-34.6734821',			'-58.560028999999986','B1754'	)	,
+		(	16	,	'	Comisionado José Indart	'	,	'	2564	'	,	'	La Matanza	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Comisionado José Indart 2564, B1754FIR La Matanza, Buenos Aires	'	,							'-34.681398',			'-58.557826999999975','B1754'	)	,
+		(	17	,	'	Pres. Juan Domingo Perón	'	,	'	2775	'	,	'	San Justo	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Pres. Juan Domingo Perón 2775, San Justo, Buenos Aires	'	,								'-34.6730205',			'-58.56154670000001','B1754'	)	,
+		(	18	,	'	Pres. Juan Domingo Perón	'	,	'	3103	'	,	'	San Justo	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Pres. Juan Domingo Perón 3103, B1754BAC San Justo, Buenos Aires	'	,						'-34.6757877',			'-58.55780759999999','B1754'	)	,
+		(	19	,	'	Pres. Juan Domingo Perón	'	,	'	3450	'	,	'	San Justo	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Pres. Juan Domingo Perón 3450, B1754BAJ San Justo, Buenos Aires	'	,						'-34.678351',			'-58.55379400000004','B1754'	)	,
+		(	20	,	'	Av. Pres. Dr. Arturo Umberto Illia	'	,	'	2398	'	,	'	San Justo	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Av. Pres. Dr. Arturo Umberto Illia 2398, B1754IUL San Justo, Buenos Aires	'	,	'-34.675126',			'-58.56318699999997','B1754'	)	,
+		(	21	,	'	Av. Pres. Dr. Arturo Umberto Illia	'	,	'	2419	'	,	'	San Justo	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Av. Pres. Dr. Arturo Umberto Illia 2419, B1754IUM San Justo, Buenos Aires	'	,	'-34.6751947',			'-58.56348919999999','B1754'	)	,
+		(	22	,	'	Av. Dr. Ignacio Arieta	'	,	'	3101	'	,	'	San Justo	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Av. Dr. Ignacio Arieta 3101, San Justo, Buenos Aires	'	,									'-34.6783489',			'-58.56075820000001','B1754'	)	,
+		(	23	,	'	Gral. Ocampo	'	,	'	2914	'	,	'	San Justo	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Gral. Ocampo 2914, B1754AXZ San Justo, Buenos Aires	'	,												'-34.6746348',			'-58.56061540000002','B1754'	)	,
+		(	24	,	'	Monseñor José Francisco Marcón	'	,	'	888	'	,	'	Villa Luzuriaga	'	,	'	Buenos Aires	'	,	'	Argentina	'	,	'	Monseñor José Francisco Marcón 888, Villa Luzuriaga, Buenos Aires	'	,				'-34.6632872',			'-58.58243590000001','B1754'	)	

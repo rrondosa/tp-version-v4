@@ -87,8 +87,8 @@
 	
 
 	<!-- BUSCADOR -->
-	</br>
-	</br>
+	<br/>
+	<br />
 	<div class="row py-2">
 	
 		<div class="col-md-3"></div>
@@ -137,7 +137,7 @@
 			     <div class="card-body">
 			       <h5 class="card-title">${ evento.getNombre() }</h5>
 			       <p class="card-text">${ evento.getDescripcion() }</p>
-			       <a href="#" class="btn btn-primary">+ Detalles </a>&nbsp;&nbsp;
+			       <a href="detalleEvento?id=${ evento.getId() }" class="btn btn-primary">+ Detalles </a>&nbsp;&nbsp;
 			       
 			       <c:if test="${ not empty nombre }">
 			       		<a href="agregarEventoAlCarrito?id=${ evento.getId() }" class="btn btn-success">Agregar</a>&nbsp;&nbsp;
