@@ -70,7 +70,7 @@ public class ControladorLogin {
 					return new ModelAndView("redirect:/homeAdmin");
 			    }else {
 			    	request.getSession().setAttribute("user", "es user" );
-					request.getSession().setMaxInactiveInterval(600);
+					request.getSession().setMaxInactiveInterval(600);R
 					//return new ModelAndView("redirect:/homeUsuario");
 					return new ModelAndView("redirect:/inicioHome");
 			    }
